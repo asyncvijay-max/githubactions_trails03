@@ -86,3 +86,15 @@ pull_request: someone proposed changes
 workflow_dispatch: you clicked a “Run” button yourself (handy for testing)
 
 Once those make sense, the rest are variations on the same idea.
+============
+
+on: [push, workflow_dispatch]
+
+jobs:
+  say-hello:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello! Something happened!"
+      - run: date
+
+      ====================
