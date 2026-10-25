@@ -98,3 +98,32 @@ jobs:
       - run: date
 
       ====================
+xplaining how shell commands run on the CI workflow runner.
+Explaining how shell commands run on the CI workflow runner.
+Whatever you put after run: is a normal command-line command. GitHub runs it in the terminal of the computer named in runs-on.
+
+Since you used runs-on: ubuntu-latest, your commands run on Linux (Ubuntu). So any Linux terminal command will work, not just commands made for GitHub. echo and date are both standard Linux commands.
+
+Good beginner commands to try
+
+yaml
+      - run: pwd          # show which folder you're in
+      - run: ls           # list files in the current folder
+      - run: whoami       # show the username
+      - run: uname -a     # show details about the computer
+      - run: python3 --version   # Python comes pre-installed
+Running several commands in one step
+
+Put a | after run: and write the commands on separate lines below it, indented:
+
+yaml
+      - run: |
+          echo "Starting..."
+          date
+          ls
+Where to learn more commands
+
+Linux terminal basics: search for “Linux commands for beginners” (Ubuntu’s own command-line tutorial is a good start). Anything you learn there works in run:.
+What’s already installed on GitHub’s computers: GitHub publishes a full list of preinstalled software (Python, Node.js, Git, Java, Docker and more) in the actions/runner-images repository on GitHub. Anything on that list can be used straight away.
+GitHub’s own docs: search for “GitHub Actions workflow syntax” to see everything you can write in a workflow file, run: included.
+=====
