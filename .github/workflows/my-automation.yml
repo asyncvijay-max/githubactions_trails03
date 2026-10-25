@@ -1,0 +1,19 @@
+on: ['push', 'workflow_dispatch']
+
+jobs: 
+  dev:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - run: python3 welcome.py
+      - run: echo "Running the program"
+
+  qa:
+    runs-on: ubuntu-latest
+    needs: dev
+    steps:
+      - uses: actions/checkout@v6
+      - run: echo "Running playwright tests"
+
+        
+        
